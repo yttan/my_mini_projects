@@ -1,0 +1,10 @@
+The file activation_key_generator_mysql.py contains:
+5 blank lines
+7 annotation lines
+44 code lines
+
+The file PILsample.py contains:
+1 blank lines
+5 annotation lines
+25 code lines
+

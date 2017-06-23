@@ -1,0 +1,5 @@
+The file activation_key_generator_redis.py contains:
+1 blank lines
+3 annotation lines
+13 code lines
+

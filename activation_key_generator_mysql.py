@@ -1,3 +1,6 @@
+"""Generate 20 activation keys and store them in a MySQL database.
+Using hashlib sha1
+code in Python3"""
 import hashlib
 import random
 import MySQLdb
