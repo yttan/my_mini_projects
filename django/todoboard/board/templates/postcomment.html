@@ -1,0 +1,26 @@
+
+<form action="{% url 'postcomment' post_pk %}" method="post">
+  {% csrf_token %}
+  <div class="row">
+    <div>
+      Comment:
+      <input type="text" name="comment_text" required>
+      <button type="submit" >Submit</button>
+    </div>
+  </div>
+</form>
+
+
+<ul>
+  {% for comment in comment_list %}
+  <li>
+    <span>{{ comment.user.username_text }}</span>
+    <time>{{ comment.pub_date }}</time>
+    <div class="text">
+      {{ comment.comment_text }}
+    </div>
+  </li>
+  {% empty %}
+  No comments
+  {% endfor %}
+</ul>
