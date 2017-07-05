@@ -1,5 +1,5 @@
 
-<form action="{% url 'postcomment' post_pk %}" method="post">
+<form action="{% url 'board:postcomment' post_pk %}" method="post">
   {% csrf_token %}
   <div class="row">
     <div>

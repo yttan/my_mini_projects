@@ -23,16 +23,18 @@ def postcomment(request, post_pk):
             comment.user = postuser
             comment.save()
             comment_list = Comment.objects.all()
-            context = {"comment_list":comment_list,
-            "post_pk":post_pk
-            }
-            return render(request, 'postcomment.html',context)
+            #context = {"comment_list":comment_list,
+            #"post_pk":post_pk
+            #}
+            return HttpResponseRedirect(reverse('board:postcomment', args=(post_pk,)))
+            #return render(request, 'postcomment.html',context)
         else:
             comment_list = Comment.objects.all()
             context = {"comment_list":comment_list,
             "post_pk":post_pk}
             return render(request, 'postcomment.html', context)
     else:
+
         comment_list = Comment.objects.all()
         context = {"comment_list":comment_list,
         "post_pk":post_pk}
