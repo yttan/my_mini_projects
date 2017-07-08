@@ -9,6 +9,7 @@ from django.utils.encoding import python_2_unicode_compatible
 
 class User(models.Model):
     username_text = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)
     def __str__(self):
         return self.username_text
 

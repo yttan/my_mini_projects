@@ -31,11 +31,12 @@ def postcomment(request, post_pk):
         else:
             comment_list = Comment.objects.all()
             context = {"comment_list":comment_list,
-            "post_pk":post_pk}
-            return render(request, 'postcomment.html', context)
+            "post_pk":post_pk,
+            "error":"This is not a valid form",}
+            return render(request, 'board/postcomment.html', context)
     else:
 
         comment_list = Comment.objects.all()
         context = {"comment_list":comment_list,
         "post_pk":post_pk}
-        return render(request,'postcomment.html',context)
+        return render(request,'board/postcomment.html',context)

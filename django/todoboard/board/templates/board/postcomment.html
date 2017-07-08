@@ -1,4 +1,9 @@
 
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}" />
+{% if error %}<p><strong>{{ error }}</strong></p>{% endif %}
+
 <form action="{% url 'board:postcomment' post_pk %}" method="post">
   {% csrf_token %}
   <div class="row">
