@@ -10,3 +10,8 @@ class commentform(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['comment_text']
+
+class loginform(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username_text','password']
