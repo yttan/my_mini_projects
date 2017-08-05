@@ -9,11 +9,30 @@ from .models import User
 from .models import Comment
 from forms import commentform
 from forms import loginform
+from forms import registerform
+
 # Create your views here.
-def index(request):
-    comment_list = Comment.objects.all()
-    context = {"comment_list":comment_list}
-    return render(request, 'index.html', context)
+
+def register(request):
+    if request.method =='POST':
+        form = registerform(request.POST)
+        if form.is_valid():
+            name = request.POST.get('username_text')
+            try:
+                user_to_login = User.objects.get(username_text=name)
+                context = {"error":"Username exists",}
+                return render(request, 'board/register.html', context)
+            except User.DoesNotExist:
+                usr = form.save(commit=False)
+                usr.save()
+                return HttpResponseRedirect(reverse('board:postcomment', args=(usr.username_text,)))
+        else:
+            context = {"error":"Not a valid form",}
+            return render(request, 'board/register.html', context)
+    else:
+        context = {}
+        return render(request,'board/register.html',context)
+
 
 def login(request):
     if request.method =='POST':
@@ -25,7 +44,7 @@ def login(request):
                 user_to_login = User.objects.get(username_text=name)
 
             except User.DoesNotExist:
-                raise Http404("User does not exist")
+
                 context = {"error":"User does not exist",}
                 return render(request, 'board/login.html', context)
 
@@ -52,11 +71,8 @@ def postcomment(request, post_user):
             comment.user = postuser
             comment.save()
             comment_list = Comment.objects.all()
-            #context = {"comment_list":comment_list,
-            #"post_pk":post_pk
-            #}
             return HttpResponseRedirect(reverse('board:postcomment', args=(post_user,)))
-            #return render(request, 'postcomment.html',context)
+
         else:
             comment_list = Comment.objects.all()
             context = {"comment_list":comment_list,

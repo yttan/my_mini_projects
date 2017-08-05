@@ -1,10 +1,8 @@
-
 {% load static %}
-
 <link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}" />
 {% if error %}<p><strong>{{ error }}</strong></p>{% endif %}
 
-<form action="{% url 'board:login' %}" method="post">
+<form action="{% url 'board:register' %}" method="post">
   {% csrf_token %}
     <div>
       username:
@@ -12,8 +10,8 @@
       <br/>
       password:
       <input type="text" name="password" required>
-      <button type="submit" >login</button>
+      <button type="submit" >register</button>
     </div>
 </form>
 
-<a href="http://127.0.0.1:8000/board/register/">register</a>
+<a href="http://127.0.0.1:8000/board/login/">login</a>
