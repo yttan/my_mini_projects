@@ -13,10 +13,20 @@ class User(models.Model):
     def __str__(self):
         return self.username_text
 
-@python_2_unicode_compatible
 class Comment(models.Model):
     comment_text = models.CharField(max_length=500)
     pub_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return self.comment_text
+
+class Todo(models.Model):
+    todo_text = models.CharField(max_length=500)
+    pub_date = models.DateTimeField(auto_now_add=True)
+    finished = models.BooleanField(default = False)
+    todo_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    note = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.todo_text

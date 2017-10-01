@@ -1,0 +1,77 @@
+{% load static %}
+<html>
+<head>
+  <title>{% block title %}Todo Board{% endblock %}</title>
+<link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}" />
+{% if error %}<p><strong>{{ error }}</strong></p>{% endif %}
+</head>
+<body>
+
+<a href="http://127.0.0.1:8000/board/logout/">logout</a>
+
+  <div>
+<form action="{% url 'board:userpage' post_user %}" method="post">
+  {% csrf_token %}
+  <div class="row">
+    <div>
+      Comment:
+      <input type="text" name="comment_text" required>
+      <button type="submit" >Submit</button>
+    </div>
+  </div>
+</form>
+</div>
+
+
+<div>
+<form action="{% url 'board:add_todo' post_user %}"+"/add_todo/" method="post">
+  {% csrf_token %}
+
+  <div class="row">
+    <div>
+      Todo:
+      <input type="text" name="todo_text" required>
+      <input type="text" name="note" required>
+      <button type="submit">Submit</button>
+    </div>
+  </div>
+</form>
+</div>
+
+<ul>
+  {% for comment in comment_list %}
+  <li>
+    <span>{{ comment.user.username_text }}</span>
+    <time>{{ comment.pub_date }}</time>
+    <div class="text">
+      {{ comment.comment_text }}
+    </div>
+  </li>
+  {% empty %}
+  No comments
+  {% endfor %}
+</ul>
+
+
+<ul>
+  {% for todo in todo_list %}
+  <li>
+    <span>{{ todo.user.username_text }}</span>
+    <time>{{ todo.pub_date }}</time>
+    <div class="text">
+      {{ todo.todo_text }}
+    </div>
+    <div class="text">
+      {{ todo.note }}
+    </div>
+    <div>
+      {{ todo.finished }}
+    </div>
+  </li>
+  {% empty %}
+  No todo
+  {% endfor %}
+</ul>
+
+</body>
+</html>
