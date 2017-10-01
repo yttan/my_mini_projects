@@ -1,17 +1,36 @@
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}" />
-{% if error %}<p><strong>{{ error }}</strong></p>{% endif %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{% static 'board/style.css' %}">
 
+</head>
+<body>
+<div class="header">
+<h1>Please Register</h1>
+</div>
+<div class="content">
 <form action="{% url 'board:register' %}" method="post">
   {% csrf_token %}
-    <div>
-      username:
+
+      <p>username:</p>
       <input type="text" name="username_text" required>
-      <br/>
-      password:
+
+      <p>password:</p>
       <input type="text" name="password" required>
-      <button type="submit" >register</button>
-    </div>
+<br>
+  {% if error %}<p class="error_message"><strong>{{ error }}</strong></p>{% endif %}
+      <button type="submit" calss="button" >register</button>
+    </li>
 </form>
 
-<a href="http://127.0.0.1:8000/board/login/">login</a>
+<br> Have an account? <a href="http://127.0.0.1:8000/board/login/" class="ref">login</a>
+
+</div>
+</body>
+</html>

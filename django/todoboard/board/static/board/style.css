@@ -1,3 +1,22 @@
-li {
-    color: green;
+
+body {
+    padding-left: 15px;
+}
+
+.header h1 {
+  color: #FCA205;
+  font-size: 36pt;
+  font-family: 'Lobster';
+  text-align:center;
+  padding-top:50px;
+}
+.ref {
+  padding-left: 10px;
+
+}
+.error_message{
+  color:red;
+}
+.content{
+   text-align:center;
 }

@@ -1,15 +1,23 @@
-{% load static %}
-<html>
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
   <title>{% block title %}Todo Board{% endblock %}</title>
-<link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}" />
-{% if error %}<p><strong>{{ error }}</strong></p>{% endif %}
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'board/style.css' %}" />
+  <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+  {% if error %}<p><strong>{{ error }}</strong></p>{% endif %}
 </head>
 <body>
-
+<div class="header">
+<h1>Hello {{post_user}}</h1>
+</div>
 <a href="http://127.0.0.1:8000/board/logout/">logout</a>
 
-  <div>
+<div>
 <form action="{% url 'board:userpage' post_user %}" method="post">
   {% csrf_token %}
   <div class="row">
@@ -32,7 +40,7 @@
       Todo:
       <input type="text" name="todo_text" required>
       <input type="text" name="note" required>
-      <button type="submit">Submit</button>
+      <button type="submit"> Submit</button>
     </div>
   </div>
 </form>
@@ -43,15 +51,17 @@
   <li>
     <span>{{ comment.user.username_text }}</span>
     <time>{{ comment.pub_date }}</time>
-    <div class="text">
+    <lu class="text">
       {{ comment.comment_text }}
-    </div>
+    </lu>
     {% if comment.user.username_text == post_user %}
+    <lu>
     <form action="{% url 'board:delete_comment' post_user %}"+"/delete_comment/" method="post">
       {% csrf_token %}
       <input type="hidden" name="delete" value="{{comment.comment_id}}" />
       <input type="submit" id="del_btn" value="delete" />
     </form>
+    </lu>
     {% endif %}
   </li>
   {% empty %}
@@ -83,6 +93,5 @@
   No todo
   {% endfor %}
 </ul>
-
 </body>
 </html>
