@@ -25,4 +25,4 @@ class registerform(forms.ModelForm):
 class todoform(forms.ModelForm):
     class Meta:
         model = Todo
-        fields = ['todo_text']
+        fields = ['todo_text','note']

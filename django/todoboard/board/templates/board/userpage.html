@@ -46,6 +46,13 @@
     <div class="text">
       {{ comment.comment_text }}
     </div>
+    {% if comment.user.username_text == post_user %}
+    <form action="{% url 'board:delete_comment' post_user %}"+"/delete_comment/" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="delete" value="{{comment.comment_id}}" />
+      <input type="submit" id="del_btn" value="delete" />
+    </form>
+    {% endif %}
   </li>
   {% empty %}
   No comments
@@ -64,9 +71,13 @@
     <div class="text">
       {{ todo.note }}
     </div>
-    <div>
-      {{ todo.finished }}
-    </div>
+    {% if todo.user.username_text == post_user %}
+    <form action="{% url 'board:delete_todo' post_user %}"+"/delete_todo/" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="delete" value="{{todo.todo_id}}" />
+      <input type="submit" id="del_btn" value="delete" />
+    </form>
+    {% endif %}
   </li>
   {% empty %}
   No todo

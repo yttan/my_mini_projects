@@ -84,7 +84,7 @@ def userpage(request, post_user):
                 comment = form.save(commit=False)
                 comment.user = postuser
                 comment.save()
-                
+
                 return HttpResponseRedirect(reverse('board:userpage', args=(post_user,)))
             else:
                 comment_list = Comment.objects.all()
@@ -126,5 +126,33 @@ def add_todo(request,post_user):
                 return render(request, 'board/userpage.html', context)
         else:
             return HttpResponseRedirect(reverse('board:userpage', args=(post_user,)))
+    else:
+        return HttpResponseRedirect(reverse('board:login'))
+
+def delete_comment(request,post_user):
+    postuser = get_object_or_404(User, username_text=post_user)
+    if post_user == request.session.get('logged_in_user'):
+        if request.method == 'POST':
+            id_num=request.POST['delete']
+            comment = Comment.objects.filter(comment_id=id_num)
+            comment.delete()
+            return HttpResponseRedirect(reverse('board:userpage', args=(post_user,)))
+        else:
+            return HttpResponseRedirect(reverse('board:userpage', args=(post_user,)))
+
+    else:
+        return HttpResponseRedirect(reverse('board:login'))
+
+def delete_todo(request,post_user):
+    postuser = get_object_or_404(User, username_text=post_user)
+    if post_user == request.session.get('logged_in_user'):
+        if request.method == 'POST':
+            id_num=request.POST['delete']
+            todo = Todo.objects.filter(todo_id=id_num)
+            todo.delete()
+            return HttpResponseRedirect(reverse('board:userpage', args=(post_user,)))
+        else:
+            return HttpResponseRedirect(reverse('board:userpage', args=(post_user,)))
+
     else:
         return HttpResponseRedirect(reverse('board:login'))
