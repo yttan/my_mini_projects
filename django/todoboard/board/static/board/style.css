@@ -2,13 +2,22 @@
 body {
     padding-left: 15px;
 }
+table{
 
+  table-layout:fixed ;
+}
 .header h1 {
   color: #FCA205;
   font-size: 36pt;
   font-family: 'Lobster';
   text-align:center;
   padding-top:50px;
+}
+.username {
+  font-size: 14pt;
+  font-family: 'Lobster';
+  padding-left: 5px;
+  padding-top:5px;
 }
 .ref {
   padding-left: 10px;
@@ -18,5 +27,21 @@ body {
   color:red;
 }
 .content{
-   text-align:center;
+   text-align: center;
+   padding-top: 20px;
+}
+.add {
+    float:left;
+    display:inline;
+    text-align: center;
+}
+.todo{
+    float:left;
+    display:inline;
+    text-align: center;
+}
+.comment{
+    float:left;
+    display:inline;
+    text-align: center;
 }

@@ -5,6 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block title %}Todo Board{% endblock %}</title>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
   <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
@@ -13,7 +14,7 @@
 </head>
 <body>
 <div class="header">
-<h1>Plase Log In</h1>
+<h1>TodoBoard Log In</h1>
 </div>
 <div class="content">
 <form action="{% url 'board:login' %}" method="post">
@@ -22,7 +23,7 @@
       <input type="text" name="username_text" required>
       <p>password:</p>
       <input type="text" name="password" required>
-    <br>
+    <br><br>
     {% if error %}<p class="error_message"><strong>{{ error }}</strong></p>{% endif %}
       <button type="submit" class="button">login</button>
 </form>
