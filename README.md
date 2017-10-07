@@ -3,7 +3,7 @@ This repo contains some mini projects. Some of the sample results can be seen in
 
 ### List of files
 
-* server.py
+* server.py     
 implemented a Python web server which can give requested HTML pages and can generate error message pages
 
 * parse_pic_from_website    
@@ -12,7 +12,8 @@ Pasre pictures from a Baidu Tieba website and save them in testfolder
 * analyze_code_in_folder.py    
 Checks all the Python code files in a folder including subfolders and counts code lines, blank lines and annotation lines of every file.
 Write results into a txt file  
-Note:
+
+Note:    
 1. If a line contains both annotation and code, it is counted as a code line, and annotation
 2. line number will not increment.
 This code takes all files into consideration, but it is correct only when the file
@@ -33,8 +34,7 @@ Add a number at the top right corner of a picture. testcase in /results.
 * generate_code_pic.py  
 Generate an image verificaion code. see /results/code.jpg.
 
-* Johnsons.java
-
-Read data from johnsonsGraphData.txt and run johnson's algorithm.
+* Johnsons.java    
+Read data from johnsonsGraphData.txt and run Johnson's algorithm.
 
 
