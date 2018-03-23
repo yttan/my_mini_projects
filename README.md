@@ -27,10 +27,10 @@ This repository contains some small projects. Some of the sample results can be 
     3. testcase in /testfolder
     </td>
     </tr>
-    <tr><td>activation_key_generator_redis.py<td><td>Generate 20 activation keys and store them in a Redis database. Using uuid.<td></tr>
-    <tr><td>activation_key_generator_mysql.py<td><td>Generate 20 activation keys and store them in a MySQL database. Using hashlib sha1.<td></tr>
-    <tr><td>PILsample.py<td><td>Add a number at the top right corner of a picture. testcase in /results.<td></tr>
-    <tr><td>generate_code_pic.py<td><td>Generate an image verificaion code. see /results/code.jpg.<td></tr>
-    <tr><td>Johnsons.java<td><td>Read data from johnsonsGraphData.txt and run Johnson's algorithm.<td></tr>
+    <tr><td>activation_key_generator_redis.py</td><td>Generate 20 activation keys and store them in a Redis database. Using uuid.</td></tr>
+    <tr><td>activation_key_generator_mysql.py</td><td>Generate 20 activation keys and store them in a MySQL database. Using hashlib sha1.</td></tr>
+    <tr><td>PILsample.py</td><td>Add a number at the top right corner of a picture. testcase in /results.</td></tr>
+    <tr><td>generate_code_pic.py</td><td>Generate an image verificaion code. see /results/code.jpg.</td></tr>
+    <tr><td>Johnsons.java</td><td>Read data from johnsonsGraphData.txt and run Johnson's algorithm.</td></tr>
 
 </table>
